@@ -1,0 +1,15 @@
+h1 {
+
+    color: white
+}
+
+body {
+    background-image: url("Images/backgroundmain.jpeg");
+    background-size: auto;
+    background-position: auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color:#834848;
+    font-family: Arial, sans-serif;
+    color:rgb(221, 197, 197);
+  }
