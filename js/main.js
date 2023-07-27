@@ -1,4 +1,4 @@
-const wordArray = ['Stars', 'Nebula', 'Galaxy'];
+const wordArray = ['stars', 'nebula', 'galaxy'];
 let selectedWord = "";
 let guessedLetters = [];
 let wrongGuessCount = 0;
@@ -6,37 +6,73 @@ const maxWrongGuessCount = 4;
 
 
 function startGame() {
-
+console.log('startGame')
     guessedLetters = [];
     wrongGuessCount = 0;
 
-selectedWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+    let selectedWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+    
+    console.log(selectedWord)
 
-let wordContainer = document.getElementById("word");
-wordContainer.textContent = "";
+    let wordContainer = document.getElementById("word");
+    wordContainer.textContent = "";
+    
+    for (let i = 0; i < selectedWord.length; i++) {
+        let letterSpan = document.createElement("span");
+        letterSpan.textContent = "_"
+        wordContainer.appendChild(letterSpan);
+    }
+    
+    document.getElementById("guess").textContent = ""
+    document.getElementById("result").textContent = "";
+    document.getElementById("wrong-guess-count").texContent = maxWrongGuessCount;
+}
+console.log(Math.floor(Math.random() * wordArray.length))
+console.log(wordArray[0])
 
-for (let i = 0; i < selectedWord.length; i++) {
-    let letterSpan = document.createElement("span");
-    letterSpan.textContent = "_"
-    wordContainer.appendChild(letterSpan);
+
+function displayMessage(message) {
+    let messageContainer = document.getElementById("message");
+    messageContainer.textContent = message;
 }
 
-document.getElementById("guess").value = "";
-document.getElementById("result").textContent = "";
-document.getElementById("wrong-guess-count").texContent = maxWrongGuessCount;
+function guessLetter() {
+    let guessInput = document.getElementById("guess");
+    let guess = guessInput.value.toLowerCase();
 
+    if (guess.length !== 1) {
+        displayMessage("Enter a single letter!");
+    }
+
+    if (guessedLetters.includes(guess)) {
+        displayMessage("Letter already submitted");
+    }
+
+    guessedLetters.push(guess);
+
+    let wordContainer = document.getElementById("word");
+    let letters = wordContainer.getElementsByTagName("span");
+
+    let correctGuess = false;
+
+    for (let i = 0; i < selectedWord.length; i++) {
+
+    }
 }
 
 
 const button = document.getElementById("subButton");
 
-button.addEventListener("click", function() {
+button.addEventListener("click", function () {
     console.log("Guess Submitted!");
-    
+
 })
 
+startGame()
 
-function getRandomWordFromArray(wordArray) {
+
+
+/* function getRandomWordFromArray(wordArray) {
 
     console.log(getRandomWordFromArray(arr))
 
