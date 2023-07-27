@@ -1,8 +1,31 @@
 const wordArray = ['Stars', 'Nebula', 'Galaxy'];
-let SelectedWord = "";
+let selectedWord = "";
 let guessedLetters = [];
 let wrongGuessCount = 0;
 const maxWrongGuessCount = 4;
+
+
+function startGame() {
+
+    guessedLetters = [];
+    wrongGuessCount = 0;
+
+selectedWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+
+let wordContainer = document.getElementById("word");
+wordContainer.textContent = "";
+
+for (let i = 0; i < selectedWord.length; i++) {
+    let letterSpan = document.createElement("span");
+    letterSpan.textContent = "_"
+    wordContainer.appendChild(letterSpan);
+}
+
+document.getElementById("guess").value = "";
+document.getElementById("result").textContent = "";
+document.getElementById("wrong-guess-count").texContent = maxWrongGuessCount;
+
+}
 
 
 const button = document.getElementById("subButton");
