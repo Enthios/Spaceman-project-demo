@@ -2,6 +2,7 @@ const wordArray = ['stars', 'nebula', 'galaxy'];
 let selectedWord = "";
 let guessedLetters = [];
 let wrongGuessCount = 0;
+let guess = document.getElementById("guess").textContent
 const maxWrongGuessCount = 4;
 
 
@@ -25,7 +26,7 @@ console.log('startGame')
     
     document.getElementById("guess").textContent = ""
     document.getElementById("result").textContent = "";
-    document.getElementById("wrong-guess-count").texContent = maxWrongGuessCount;
+    document.getElementById("wrong-guess-count").textContent = maxWrongGuessCount;
 }
 console.log(Math.floor(Math.random() * wordArray.length))
 console.log(wordArray[0])
@@ -37,18 +38,19 @@ function displayMessage(message) {
 }
 
 function guessLetter() {
-    let guessInput = document.getElementById("guess");
-    let guess = guessInput.value.toLowerCase();
-
+   
     if (guess.length !== 1) {
         displayMessage("Enter a single letter!");
     }
 
-    if (guessedLetters.includes(guess)) {
+    else if (guessedLetters.includes(guess)) {
         displayMessage("Letter already submitted");
+
+    
     }
 
     guessedLetters.push(guess);
+    console.log(guessedLetters)
 
     let wordContainer = document.getElementById("word");
     let letters = wordContainer.getElementsByTagName("span");
@@ -60,35 +62,33 @@ function guessLetter() {
     }
 }
 
+function compareLetter() {
+
+// compare word to letters that have been guessed
+
+let guessString = guessedLetters.toString() 
+guessString.toLowerCase
+
+if(selectedWord === guessString) {
+console.log("1")
+console.log(selectedWord)
+}
+console.log(guessString)
+console.log("2")
+}
+
 
 const button = document.getElementById("subButton");
 
 button.addEventListener("click", function () {
     console.log("Guess Submitted!");
+guessLetter()
+compareLetter()
 
 })
 
 startGame()
 
-
-
-/* function getRandomWordFromArray(wordArray) {
-
-    console.log(getRandomWordFromArray(arr))
-
-    const words = ['Stars', 'Nebula', 'Galaxy'];
-
-    const randomWord = getRandomWordFromArray(words);
-    console.log(randomWord);
-
-
-
-    const randomIndex = Math.floor(Math.random() * wordArray.length);
-
-
-    return wordArray[randomIndex];
-
-}
 
 
     
