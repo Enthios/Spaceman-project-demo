@@ -4,7 +4,8 @@ let guessedLetters = [];
 let wrongGuessCount = 0;
 let guess = document.getElementById("guess").textContent
 const maxWrongGuessCount = 4;
-
+console.log(guess)
+let wordContainer = document.getElementById("word");
 
 function startGame() {
 console.log('startGame')
@@ -15,8 +16,8 @@ console.log('startGame')
     
     console.log(selectedWord)
 
-    let wordContainer = document.getElementById("word");
     wordContainer.textContent = "";
+    console.log(wordContainer.textContent)
     
     for (let i = 0; i < selectedWord.length; i++) {
         let letterSpan = document.createElement("span");
@@ -24,6 +25,8 @@ console.log('startGame')
         wordContainer.appendChild(letterSpan);
     }
     
+
+
     document.getElementById("guess").textContent = ""
     document.getElementById("result").textContent = "";
     document.getElementById("wrong-guess-count").textContent = maxWrongGuessCount;
@@ -37,9 +40,10 @@ function displayMessage(message) {
     messageContainer.textContent = message;
 }
 
-function guessLetter() {
-   
-    if (guess.length !== 1) {
+function guessLetter() { 
+    guess = ""
+   console.log(guess)
+    if (guess.length != 1) {
         displayMessage("Enter a single letter!");
     }
 
@@ -47,6 +51,7 @@ function guessLetter() {
         displayMessage("Letter already submitted");
 
     
+
     }
 
     guessedLetters.push(guess);
@@ -56,17 +61,21 @@ function guessLetter() {
     let letters = wordContainer.getElementsByTagName("span");
 
     let correctGuess = false;
+    compareLetter(guess)
+    // for (let i = 0; i < selectedWord.length; i++) {
+    //     if (selectedWord === guess) {
 
-    for (let i = 0; i < selectedWord.length; i++) {
-
+    //     }
     }
-}
+// }
 
-function compareLetter() {
+function compareLetter(currentLetter) {
+    
 
 // compare word to letters that have been guessed
 
 let guessString = guessedLetters.toString() 
+console.log(guessString)
 guessString.toLowerCase
 
 if(selectedWord === guessString) {
@@ -83,7 +92,7 @@ const button = document.getElementById("subButton");
 button.addEventListener("click", function () {
     console.log("Guess Submitted!");
 guessLetter()
-compareLetter()
+
 
 })
 
