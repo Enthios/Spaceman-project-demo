@@ -1,9 +1,12 @@
 h1 {
-
+    text-align: center;
     color: white
+
 }
 
+
 body {
+    
     background-image: url("../backgroundmain.jpeg");
     background-size: auto;
     background-position: auto;
@@ -18,7 +21,7 @@ body {
         color: blue;
         text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
         font-family: "CustomFont", sans-serif;
-        margin: 20px auto;
+        vertical-align: middle;
         text-transform: fullsize;
         font-weight: bold;
         background-color: rgba(150, 150, 150, 0.8);
@@ -29,6 +32,7 @@ body {
     
 
     #word-container {
+        text-align: center;
         color: black;
         margin: 20px auto;
         letter-spacing: 10px;
@@ -43,13 +47,18 @@ body {
       }
 
       #message {
+        text-align: center;
         font-size: 18px;
         text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-        /* Outline effect, ill be using this alot to help make text pop from the background. */
-        color: yellow;
+        color: rgb(192, 134, 201);
         font-weight: bold;
-        margin: 20px auto;
-        background-color: rgba(255, 255, 255, 0.7);
+        margin: 30px auto;
+        background-color: rgba(255, 255, 255, 0.3);
         width: 220px;
+        position: auto;
+      }
+
+      #input {
+        
       }
   }
