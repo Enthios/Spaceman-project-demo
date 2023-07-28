@@ -3,10 +3,10 @@ let selectedWord = "";
 let guessedLetters = [];
 let wrongGuessCount = 0;
 let guess = document.getElementById("guess").textContent
-console.log(guess)
+// console.log(guess)
 let wordContainer = document.getElementById("word");
 let input = document.getElementById("text");
-console.log(input)
+// console.log(input)
 let letterSpan = document.createElement("span");
 let selectedArray = []
 const maxWrongGuessCount = 4;
@@ -24,15 +24,15 @@ function startGame() {
     console.log(selectedArray)
 
     wordContainer.textContent = "";
-    console.log(wordContainer.textContent)
-    console.log(selectedArray.length)
+    // console.log(wordContainer.textContent)
+    // console.log(selectedArray.length)
     for (let i = 0; i < selectedArray.length; i++) {
         console.log(i)
         let newSpan = document.createElement("span");
         newSpan.textContent = "_"
         newSpan.id = i;
         wordContainer.appendChild(newSpan);
-        console.log(newSpan.id)
+        // console.log(newSpan.id)
     }
 
 
@@ -80,7 +80,7 @@ function guessLetter() {
 
 
     compareLetter(guess);
-
+    checkWin()
 }
 
 function compareLetter(currentLetter) {
@@ -92,6 +92,8 @@ function compareLetter(currentLetter) {
         console.log("1")
         console.log(selectedWord)
     }
+
+    
 
 }
 
@@ -130,16 +132,22 @@ function checkWin() {
     let arr3 = ['c', 'd'];
 
     let checkSubset = (guessedLetters, selectedArray) => {
-        console.log(checkSubset)
-        return selectedArray.every((el) => {
-            return guessedLetters.includes(el);
-        });
+        // console.log(checkSubset)
+        // return selectedArray.every((el) => {
+        //     return guessedLetters.includes(el);
+        // });
+        console.log(guessedLetters.join(""))
+        console.log(selectedWord)
+        return guessedLetters.join("") == selectedArray.join("")
+        
+        
     };
 
     checkSubset(arr1, arr2); // returns true
     checkSubset(arr1, arr3);
-
-    if (checkSubset(arr1, arr2) === true) {
+    const test = checkSubset (guessedLetters, selectedArray) 
+    console.log(test)
+    if (test === true) {
         displayMessage("You've won!");
     } else {
         displayMessage("Keep guessing!");
@@ -147,7 +155,7 @@ function checkWin() {
 }
 
 // Call the checkWin function to execute the code
-checkWin();
+// checkWin();
 
 
 const button = document.getElementById("subButton");
@@ -157,6 +165,6 @@ button.addEventListener("click", function () {
     guessLetter()
 })
 
-checkWin();
+// checkWin();
 
 startGame();
