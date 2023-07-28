@@ -122,33 +122,33 @@ function displayGuess(currentLetter) {
 
 
 function checkWin() {
+
+    //  array method from: https://dev.to/smpnjn/javascript-check-if-an-array-is-a-subset-of-another-array-950
+
     let arr1 = ['a', 'b', 'c'];
     let arr2 = ['b', 'c'];
     let arr3 = ['c', 'd'];
-  
+
     let checkSubset = (guessedLetters, selectedArray) => {
-      return selectedArray.every((el) => {
-        return guessedLetters.includes(el);
-      });
+        console.log(checkSubset)
+        return selectedArray.every((el) => {
+            return guessedLetters.includes(el);
+        });
     };
-  
-    let result1 = checkSubset(arr1, arr2);
-    console.log(result1); // returns true
-  
-    let result2 = checkSubset(arr1, arr3);
-    console.log(result2); // returns false
-  
-    if (result1 === true) {
-      displayMessage("You've won!");
+
+    checkSubset(arr1, arr2); // returns true
+    checkSubset(arr1, arr3);
+
+    if (checkSubset(arr1, arr2) === true) {
+        displayMessage("You've won!");
     } else {
-      displayMessage("Keep guessing!");
+        displayMessage("Keep guessing!");
     }
-  }
-  
-  // Call the checkWin function to execute the code
-  checkWin();
-  
-//  array method from: https://dev.to/smpnjn/javascript-check-if-an-array-is-a-subset-of-another-array-950
+}
+
+// Call the checkWin function to execute the code
+checkWin();
+
 
 const button = document.getElementById("subButton");
 
