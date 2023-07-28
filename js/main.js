@@ -29,13 +29,13 @@ function startGame() {
     for (let i = 0; i < selectedArray.length; i++) {
         console.log(i)
         let newSpan = document.createElement("span");
-        newSpan.textContent = "_" 
+        newSpan.textContent = "_"
         newSpan.id = i;
         wordContainer.appendChild(newSpan);
         console.log(newSpan.id)
     }
 
-    
+
 
     document.getElementById("guess").textContent = ""
     document.getElementById("result").textContent = "";
@@ -50,9 +50,9 @@ function displayMessage(message) {
     messageContainer.textContent = message;
 }
 
+
 function guessLetter() {
     guess = input.value
-    console.log(guess)
     if (guess.length != 1) {
         displayMessage("Enter a single letter!");
     }
@@ -78,22 +78,15 @@ function guessLetter() {
 
     let correctGuess = false;
 
-    // for (let i = 0; i < selectedWord.length; i++) {
-    //     if (selectedWord[i] === guess) {
-    //         letters[i].textContent = guess;
 
-    //     }
-    // }
-
-
-    compareLetter(guess)
+    compareLetter(guess);
 
 }
 
 function compareLetter(currentLetter) {
 
     console.log(currentLetter)
-displayGuess(currentLetter)
+    displayGuess(currentLetter)
 
     if (selectedWord.includes(currentLetter)) {
         console.log("1")
@@ -103,116 +96,67 @@ displayGuess(currentLetter)
 }
 
 function displayGuess(currentLetter) {
- console.log(letterSpan.innerHTML)
+    console.log(letterSpan.innerHTML)
 
- let letterIndex = 0
+    let letterIndex = 0
 
-for (let i = 0; i < selectedArray.length; i++) {
+    for (let i = 0; i < selectedArray.length; i++) {
         console.log(i)
-       if(selectedArray[i] === currentLetter) {
-        letterIndex = i
-        wordContainer[i] = currentLetter
-        document.getElementById(i).innerHTML = currentLetter
-        console.log(wordContainer)
-       } else {
-        console.log(selectedArray[i])
-       }
-}
-console.log(wordContainer)
+        if (selectedArray[i] === currentLetter) {
+            letterIndex = i
+            wordContainer[i] = currentLetter
+            document.getElementById(i).innerHTML = currentLetter
+            console.log(wordContainer)
+        } else {
+            console.log(selectedArray[i])
+        }
+    }
+    console.log(wordContainer)
 
- letterSpan.innerHTML = currentLetter;
+    letterSpan.innerHTML = currentLetter;
 
 }
 
 // if guessed letter contains current letter,
+
+
+
+function checkWin() {
+    let arr1 = ['a', 'b', 'c'];
+    let arr2 = ['b', 'c'];
+    let arr3 = ['c', 'd'];
+  
+    let checkSubset = (guessedLetters, selectedArray) => {
+      return selectedArray.every((el) => {
+        return guessedLetters.includes(el);
+      });
+    };
+  
+    let result1 = checkSubset(arr1, arr2);
+    console.log(result1); // returns true
+  
+    let result2 = checkSubset(arr1, arr3);
+    console.log(result2); // returns false
+  
+    if (result1 === true) {
+      displayMessage("You've won!");
+    } else {
+      displayMessage("Keep guessing!");
+    }
+  }
+  
+  // Call the checkWin function to execute the code
+  checkWin();
+  
+//  array method from: https://dev.to/smpnjn/javascript-check-if-an-array-is-a-subset-of-another-array-950
 
 const button = document.getElementById("subButton");
 
 button.addEventListener("click", function () {
     console.log("Guess Submitted!");
     guessLetter()
-
-
 })
 
-function checkWin() {
-    let guessedLetters() {
-        //  array method from: https://dev.to/smpnjn/javascript-check-if-an-array-is-a-subset-of-another-array-950
-    }
-            // if all letters of selectedArray are inside of the guessedLetters array, win condition met
-        }
-    }
-}
+checkWin();
 
-startGame()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* let solution = "Nebula"
-
-let userInput = ""
-
-let inputEl = document.querySelector("#input")
-let submitEl = document.querySelector("#submit")
-let statusEl = document.querySelector("#status")
-
-submitEl.addEventListener("click", handleGuessSubmit);
-
-function handleGuessSubmit() {
-    
-const currentAnswer = inputEl.value;
-
-let correctNum = compareAnswer(solution, currentAnswer);
-inputEl.value = ""
-;
-
-guess--;
-
-statusEl.textContent = "You have ${correctNum} letters right!"
-
-function compareAnswer(answer, input) {
-
-let correctCount =0;
-if (answer === input) {
-
-} else {
-    for (let i = 0; i < answer.length; i++) {
-        const answerChar = answer[i];
-        const inputChar = input[i];
-        console.log(answerChar, inputChar);
-        if (answerChat === inputChar) {
-            correctCount++;
-        }
-    }
-    return correctCount;
-}
-}
-
-
-}
-
-
-
-
-
-// document.body.style.backgroundImage = 'url("Images/backgroundmain.jpeg")';
-document.body.style.backgroundSize = "100%";
-document.body.style.backgroundRepeat = "no-repeat";
-document.body.style.backgroundPosition = "auto";
-
-document.h1.style.color = "white";
-
-*/
+startGame();
