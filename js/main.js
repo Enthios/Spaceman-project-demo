@@ -3,29 +3,39 @@ let selectedWord = "";
 let guessedLetters = [];
 let wrongGuessCount = 0;
 let guess = document.getElementById("guess").textContent
-const maxWrongGuessCount = 4;
 console.log(guess)
 let wordContainer = document.getElementById("word");
+let input = document.getElementById("text");
+console.log(input)
+let letterSpan = document.createElement("span");
+let selectedArray = []
+const maxWrongGuessCount = 4;
 
 function startGame() {
-console.log('startGame')
+    console.log('startGame')
     guessedLetters = [];
     wrongGuessCount = 0;
 
     let selectedWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-    
+
     console.log(selectedWord)
+
+    selectedArray = selectedWord.split("")
+    console.log(selectedArray)
 
     wordContainer.textContent = "";
     console.log(wordContainer.textContent)
-    
-    for (let i = 0; i < selectedWord.length; i++) {
-        let letterSpan = document.createElement("span");
-        letterSpan.textContent = "_"
-        wordContainer.appendChild(letterSpan);
+    console.log(selectedArray.length)
+    for (let i = 0; i < selectedArray.length; i++) {
+        console.log(i)
+        let newSpan = document.createElement("span");
+        newSpan.textContent = "_" 
+        newSpan.id = i;
+        wordContainer.appendChild(newSpan);
+        console.log(newSpan.id)
     }
-    
 
+    
 
     document.getElementById("guess").textContent = ""
     document.getElementById("result").textContent = "";
@@ -40,9 +50,9 @@ function displayMessage(message) {
     messageContainer.textContent = message;
 }
 
-function guessLetter() { 
-    guess = ""
-   console.log(guess)
+function guessLetter() {
+    guess = input.value
+    console.log(guess)
     if (guess.length != 1) {
         displayMessage("Enter a single letter!");
     }
@@ -50,68 +60,106 @@ function guessLetter() {
     else if (guessedLetters.includes(guess)) {
         displayMessage("Letter already submitted");
 
-    
+
 
     }
 
     guessedLetters.push(guess);
     console.log(guessedLetters)
 
+    if (guess) {
+        document.querySelector("letterSpan");
+    }
+
     let wordContainer = document.getElementById("word");
     let letters = wordContainer.getElementsByTagName("span");
 
+
+
     let correctGuess = false;
-    compareLetter(guess)
+
     // for (let i = 0; i < selectedWord.length; i++) {
-    //     if (selectedWord === guess) {
+    //     if (selectedWord[i] === guess) {
+    //         letters[i].textContent = guess;
 
     //     }
-    }
-// }
+    // }
+
+
+    compareLetter(guess)
+
+}
 
 function compareLetter(currentLetter) {
-    
 
-// compare word to letters that have been guessed
+    console.log(currentLetter)
+displayGuess(currentLetter)
 
-let guessString = guessedLetters.toString() 
-console.log(guessString)
-guessString.toLowerCase
+    if (selectedWord.includes(currentLetter)) {
+        console.log("1")
+        console.log(selectedWord)
+    }
 
-if(selectedWord === guessString) {
-console.log("1")
-console.log(selectedWord)
-}
-console.log(guessString)
-console.log("2")
 }
 
+function displayGuess(currentLetter) {
+ console.log(letterSpan.innerHTML)
+
+ let letterIndex = 0
+
+for (let i = 0; i < selectedArray.length; i++) {
+        console.log(i)
+       if(selectedArray[i] === currentLetter) {
+        letterIndex = i
+        wordContainer[i] = currentLetter
+        document.getElementById(i).innerHTML = currentLetter
+        console.log(wordContainer)
+       } else {
+        console.log(selectedArray[i])
+       }
+}
+console.log(wordContainer)
+
+ letterSpan.innerHTML = currentLetter;
+
+}
+
+// if guessed letter contains current letter,
 
 const button = document.getElementById("subButton");
 
 button.addEventListener("click", function () {
     console.log("Guess Submitted!");
-guessLetter()
+    guessLetter()
 
 
 })
+
+function checkWin() {
+    let guessedLetters() {
+        //  array method from: https://dev.to/smpnjn/javascript-check-if-an-array-is-a-subset-of-another-array-950
+    }
+            // if all letters of selectedArray are inside of the guessedLetters array, win condition met
+        }
+    }
+}
 
 startGame()
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* let solution = "Nebula"
 
