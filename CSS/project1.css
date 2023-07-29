@@ -1,7 +1,8 @@
 h1 {
     text-align: center;
-    color: white
-
+    color: rgb(192, 134, 201);
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    
 }
 
 
@@ -19,8 +20,9 @@ body {
     #guess-container {
         /* Container for guess input */
         color: blue;
+        margin: 20px auto;
         text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-        font-family: "CustomFont", sans-serif;
+        font-family: sans-serif;
         vertical-align: middle;
         text-transform: fullsize;
         font-weight: bold;
@@ -28,6 +30,14 @@ body {
         padding: 10px;
         border-radius: 10px;
         width: 400px;
+
+        #text {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
       }
     
 
@@ -46,19 +56,40 @@ body {
         font-size: 30px;
       }
 
+      #sub-button {
+        text-align: center;
+        font-size: 18px;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        color: rgb(192, 134, 201);
+        font-weight: bold;
+        vertical-align: middle;
+        margin-left: 40%;
+        background-color: rgba(255, 255, 255, 0.3);
+        width: 220px;
+      }
+
       #message {
         text-align: center;
         font-size: 18px;
         text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
         color: rgb(192, 134, 201);
         font-weight: bold;
-        margin: 30px auto;
+        margin-top: 150px auto;
         background-color: rgba(255, 255, 255, 0.3);
         width: 220px;
-        position: auto;
-      }
-
-      #input {
         
       }
-  }
+
+    #wrong-guess {
+        margin-left: 39%;
+        font-size: 22px;
+        font-weight: bold;
+        color: rgb(189, 37, 37);
+        text-shadow: -2px -2px 0 rgb(189, 181, 181), 1px -1px 0 rgb(180, 167, 167), -1px 1px 0 rgb(163, 146, 146), 1px 1px 0 rgb(152, 131, 131);
+    }
+
+
+     
+
+      }
+  
